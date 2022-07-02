@@ -1,0 +1,83 @@
+function getTestimonials() {
+  //put api calls to retrieve testimonials here
+  const testimonials = [
+    {
+      text:
+        "Proin erat justo, eleifend in hendrerit sit amet, lacinia et justo. Proin euismod pulvinar leo et sodales. Curabitur egestas diam sed diam malesuada venenatis. Suspendisse suscipit ante eu libero accumsan sagittis. Vestibulum vitae libero et felis laoreet condimentum ac a nisl. Curabitur hendrerit, augue sit amet porttitor venenatis, metus erat consequat urna, a sagittis mi neque ac sapien tellus.",
+      name: "John Doe",
+      image: "https://i.pravatar.cc/30?img=1",
+      stars: 5
+    },
+    {
+      text:
+        "Curabitur hendrerit, augue sit amet porttitor venenatis, metus erat consequat urna, a sagittis mi neque ac sapien tellus.",
+      name: "Alicia Maze",
+      image: "https://i.pravatar.cc/30?img=2",
+      stars: 5
+    },
+    {
+      text:
+        "Suspendisse suscipit ante eu libero accumsan sagittis. Vestibulum vitae libero et felis laoreet condimentum ac a nisl. Curabitur hendrerit, augue sit amet porttitor venenatis, metus erat consequat urna, a sagittis mi neque ac sapien tellus.",
+      name: "Bob Roger",
+      image: "https://i.pravatar.cc/30?img=4",
+      stars: 5
+    }
+  ];
+  return testimonials;
+}
+
+function Testimonials(props) {
+  const data = props.data;
+  return (
+    <div className="testimonials">
+      {data.map((review) => (
+        <TestimonialCard
+          review={review.text}
+          name={review.name}
+          image={review.image}
+          stars={review.stars}
+        />
+      ))}
+    </div>
+  );
+}
+
+function Star(props) {
+  return <span class="fa fa-star checked"></span>;
+}
+
+function TestimonialCard(props) {
+  const stars = getStarList(props.stars);
+  return (
+    <div class="card">
+      <div class="card_container">
+        <div class="review">
+          <blockquote>{props.review}</blockquote>
+          <rating>
+            {stars.map((star) => (
+              <Star />
+            ))}
+          </rating>
+          <div class="reviewer">
+            <img src={props.image} height="30px" width="30px" />
+            <a href="#">{props.name}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function getStarList(value) {
+  let star_list = [];
+  for (let i = 0; i < value; i++) {
+    star_list.push(i);
+  }
+
+  return star_list;
+}
+
+ReactDOM.render(
+  <Testimonials data={getTestimonials()} />,
+  document.getElementById("root")
+);
