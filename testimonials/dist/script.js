@@ -1,39 +1,39 @@
 function getTestimonials() {
   //put api calls to retrieve testimonials here
   const testimonials = [
-    {
-      text:
-        "Proin erat justo, eleifend in hendrerit sit amet, lacinia et justo. Proin euismod pulvinar leo et sodales. Curabitur egestas diam sed diam malesuada venenatis. Suspendisse suscipit ante eu libero accumsan sagittis. Vestibulum vitae libero et felis laoreet condimentum ac a nisl. Curabitur hendrerit, augue sit amet porttitor venenatis, metus erat consequat urna, a sagittis mi neque ac sapien tellus.",
-      name: "John Doe",
-      image: "#",
-      stars: 5,
-      link: "#"
-    },
-    {
-      text:
-        "Curabitur hendrerit, augue sit amet porttitor venenatis, metus erat consequat urna, a sagittis mi neque ac sapien tellus.",
-      name: "Alicia Maze",
-      image: "#",
-      stars: 5,
-      link: "#"
-    },
-    {
-      text:
-        "Suspendisse suscipit ante eu libero accumsan sagittis. Vestibulum vitae libero et felis laoreet condimentum ac a nisl. Curabitur hendrerit, augue sit amet porttitor venenatis, metus erat consequat urna, a sagittis mi neque ac sapien tellus.",
-      name: "Bob Roger",
-      image: "#",
-      stars: 5,
-      link: "#"
-    },
-    {
-      text:
-        "Suspendisse suscipit ante eu libero accumsan sagittis. Vestibulum vitae libero et felis laoreet condimentum ac a nisl. Curabitur hendrerit, augue sit amet porttitor venenatis, metus erat consequat urna, a sagittis mi neque ac sapien tellus.",
-      name: "Bob Roger",
-      image: "#",
-      stars: 5,
-      link: "#"
-    }
-  ];
+  {
+    text:
+    "Proin erat justo, eleifend in hendrerit sit amet, lacinia et justo. Proin euismod pulvinar leo et sodales. Curabitur egestas diam sed diam malesuada venenatis. Suspendisse suscipit ante eu libero accumsan sagittis. Vestibulum vitae libero et felis laoreet condimentum ac a nisl. Curabitur hendrerit, augue sit amet porttitor venenatis, metus erat consequat urna, a sagittis mi neque ac sapien tellus.",
+    name: "John Doe",
+    image: "#",
+    stars: 5,
+    link: "#" },
+
+  {
+    text:
+    "Curabitur hendrerit, augue sit amet porttitor venenatis, metus erat consequat urna, a sagittis mi neque ac sapien tellus.",
+    name: "Alicia Maze",
+    image: "#",
+    stars: 5,
+    link: "#" },
+
+  {
+    text:
+    "Suspendisse suscipit ante eu libero accumsan sagittis. Vestibulum vitae libero et felis laoreet condimentum ac a nisl. Curabitur hendrerit, augue sit amet porttitor venenatis, metus erat consequat urna, a sagittis mi neque ac sapien tellus.",
+    name: "Bob Roger",
+    image: "#",
+    stars: 5,
+    link: "#" },
+
+  {
+    text:
+    "Suspendisse suscipit ante eu libero accumsan sagittis. Vestibulum vitae libero et felis laoreet condimentum ac a nisl. Curabitur hendrerit, augue sit amet porttitor venenatis, metus erat consequat urna, a sagittis mi neque ac sapien tellus.",
+    name: "Bob Roger",
+    image: "#",
+    stars: 5,
+    link: "#" }];
+
+
   return testimonials;
 }
 
@@ -52,8 +52,8 @@ function scroll(direction) {
   }
 
   const testimonial_classes = Array.from(
-    document.getElementsByClassName("testimonials")
-  );
+  document.getElementsByClassName("testimonials"));
+
   console.log(scroll_by);
   const class_to_scroll = testimonial_classes[0];
   class_to_scroll.scrollBy({ top: 0, left: scroll_by, behavior: "smooth" });
@@ -72,59 +72,59 @@ function getViewportDimensions() {
 
 function Testimonials(props) {
   const data = props.data;
-  return (
-    <div className="testimonials-viewport">
-      <ScrollBtn pos="left" arrow="⮜" />
-      <ScrollBtn pos="right" arrow="⮞" />
-      <div className="testimonials">
-        {data.map((review) => (
-          <TestimonialCard
-            review={review.text}
-            name={review.name}
-            image={review.image}
-            stars={review.stars}
-          />
-        ))}
-      </div>
-    </div>
-  );
+  return /*#__PURE__*/(
+    React.createElement("div", { className: "testimonials-viewport" }, /*#__PURE__*/
+    React.createElement(ScrollBtn, { pos: "left", arrow: "\u2B9C" }), /*#__PURE__*/
+    React.createElement(ScrollBtn, { pos: "right", arrow: "\u2B9E" }), /*#__PURE__*/
+    React.createElement("div", { className: "testimonials" },
+    data.map((review) => /*#__PURE__*/
+    React.createElement(TestimonialCard, {
+      review: review.text,
+      name: review.name,
+      image: review.image,
+      stars: review.stars })))));
+
+
+
+
+
 }
 
 function Star(props) {
-  return <span class="fa fa-star checked"></span>;
+  return /*#__PURE__*/React.createElement("span", { class: "fa fa-star checked" });
 }
 
 function ScrollBtn(props) {
-  return (
-    <button
-      className={`scroll_btn ${props.pos}`}
-      onClick={() => scroll(props.pos)}
-    >
-      {props.arrow}
-    </button>
-  );
+  return /*#__PURE__*/(
+    React.createElement("button", {
+      className: `scroll_btn ${props.pos}`,
+      onClick: () => scroll(props.pos) },
+
+    props.arrow));
+
+
 }
 
 function TestimonialCard(props) {
   const stars = getStarList(props.stars);
-  return (
-    <div class="card">
-      <div class="card_container">
-        <div class="review">
-          <blockquote>{props.review}</blockquote>
-          <rating>
-            {stars.map((star) => (
-              <Star />
-            ))}
-          </rating>
-          <div class="reviewer">
-            <img src={props.image} height="30px" width="30px" />
-            <a href={props.link}>{props.name}</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+  return /*#__PURE__*/(
+    React.createElement("div", { class: "card" }, /*#__PURE__*/
+    React.createElement("div", { class: "card_container" }, /*#__PURE__*/
+    React.createElement("div", { class: "review" }, /*#__PURE__*/
+    React.createElement("blockquote", null, props.review), /*#__PURE__*/
+    React.createElement("rating", null,
+    stars.map((star) => /*#__PURE__*/
+    React.createElement(Star, null))), /*#__PURE__*/
+
+
+    React.createElement("div", { class: "reviewer" }, /*#__PURE__*/
+    React.createElement("img", { src: props.image, height: "30px", width: "30px" }), /*#__PURE__*/
+    React.createElement("a", { href: props.link }, props.name))))));
+
+
+
+
+
 }
 
 function getStarList(value) {
@@ -136,7 +136,6 @@ function getStarList(value) {
   return star_list;
 }
 
-ReactDOM.render(
-  <Testimonials data={getTestimonials()} />,
-  document.getElementById("root")
-);
+ReactDOM.render( /*#__PURE__*/
+React.createElement(Testimonials, { data: getTestimonials() }),
+document.getElementById("root"));
