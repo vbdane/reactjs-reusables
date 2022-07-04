@@ -3,10 +3,40 @@
   overflow-x: scroll;
   padding-bottom: 0.5em;
   -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  scroll-behaviour: smooth;
+}
+
+.testimonials-viewport {
+  position: relative;
 }
 
 .testimonials::-webkit-scrollbar {
   display: none;
+}
+
+.scroll_btn {
+  position: absolute;
+  background-color: gray;
+  opacity: 0.1;
+  font-size: 1.5em;
+  border-radius: 50%;
+  border-width: 0;
+  z-index: 10;
+}
+
+.scroll_btn:hover {
+  opacity: 0.3;
+}
+
+.scroll_btn.left {
+  left: -0.2em;
+  top: 50%;
+}
+
+.scroll_btn.right {
+  right: 0;
+  top: 50%;
 }
 
 .card {
@@ -19,6 +49,10 @@
   border-radius: 0.5em;
   font-family: "Georgia", "Arial", sans-serif;
   margin: 0em 1.25em 0em 0em;
+}
+
+.card:hover {
+  opacity: 1;
 }
 
 .reviewer img {
@@ -92,5 +126,9 @@
 @media only screen and (min-width: 768px) {
   .card {
     width: 40vw;
+    opacity: 0.7;
+  }
+  .scroll_btn {
+    visibility: visible;
   }
 }
